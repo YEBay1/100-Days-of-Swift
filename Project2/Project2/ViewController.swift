@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem=UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
+        
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
         
         button1.layer.borderWidth=12
@@ -87,4 +89,9 @@ class ViewController: UIViewController {
         
     }
     
+    @objc func shareTapped(){
+        let vc=UIActivityViewController(activityItems:["Your score: \(score)"],applicationActivities:[])
+        vc.popoverPresentationController?.barButtonItem=navigationItem.rightBarButtonItem
+        present(vc, animated: true)
+    }
 }
