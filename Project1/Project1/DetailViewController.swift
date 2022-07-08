@@ -10,11 +10,16 @@ import UIKit
 class DetailViewController: UIViewController {
 	@IBOutlet var imageView: UIImageView!
 	var selectedImage: String?
+    
+    var link="https://github.com/YEBay1/IOS/tree/main/Project1"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
 		title = selectedImage
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
+        
         navigationItem.largeTitleDisplayMode = .never
 
 		if let imageToLoad = selectedImage {
@@ -32,5 +37,10 @@ class DetailViewController: UIViewController {
         navigationController?.hidesBarsOnTap = false
     }
     
+    @objc func shareTapped(){
+        let vc=UIActivityViewController(activityItems:[link],applicationActivities:[])
+        vc.popoverPresentationController?.barButtonItem=navigationItem.rightBarButtonItem
+        present(vc,animated:true)
+    }
 
 }
