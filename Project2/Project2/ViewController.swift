@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         
         title=countries[correctAnswer].uppercased() 
         
-        label.text="Score: \(score)"
+        //label.text="Score: \(score)"
     }
 
     @IBAction func buttonTapped(_ sender: UIButton) {
