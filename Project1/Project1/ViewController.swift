@@ -20,13 +20,17 @@ class ViewController: UITableViewController {
 		let path = Bundle.main.resourcePath!
 		let items = try! fm.contentsOfDirectory(atPath: path)
 
-		for item in items {
-			if item.hasPrefix("nssl") {
-				pictures.append(item)
-                pictures.sort()         // Bu metot sayesinde resimler sıralanır
+        	for item in items {
+        	DispatchQueue.global(qos: .userInitiated).async {
+				if item.hasPrefix("nssl") {
+                	self.pictures.append(item)
+                	self.pictures.sort()
+				}
 			}
 		}
-	}
+        	tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+        
+}
     
     
 
