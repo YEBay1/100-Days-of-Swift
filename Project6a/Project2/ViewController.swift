@@ -83,6 +83,11 @@ class ViewController: UIViewController {
     @objc func shareTapped(){
         let vc=UIActivityViewController(activityItems:["Your score: \(score)"],applicationActivities:[])
         vc.popoverPresentationController?.barButtonItem=navigationItem.rightBarButtonItem
+        
+        
+        print("Its so bad")
+        
         present(vc, animated: true)
     }
+    
 }
